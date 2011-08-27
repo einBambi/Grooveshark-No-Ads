@@ -1,0 +1,2 @@
+content nogroovesharkads chrome/content/
+overlay chrome://browser/content/browser.xul chrome://nogroovesharkads/content/nogroovesharkads.xul

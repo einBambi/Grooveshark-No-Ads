@@ -1,0 +1,8 @@
+@-moz-document domain(grooveshark.com) {
+  #capital, #searchCapitalWrapper, #theme_page_header {
+    display: none !important
+  }
+  #application   {
+    margin-right: 0 !important
+  }
+}
