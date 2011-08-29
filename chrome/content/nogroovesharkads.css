@@ -1,5 +1,5 @@
 @-moz-document domain(grooveshark.com) {
-  #capital, #searchCapitalWrapper {
+  #capital, #searchCapitalWrapper, #theme_home {
     display: none !important
   }
   #application   {
