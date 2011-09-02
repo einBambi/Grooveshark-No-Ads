@@ -32,6 +32,10 @@ the terms of any one of the MPL, the GPL or the LGPL.
 window.addEventListener("load", function(e) { nogroovesharkads.init(); }, false);
 
 var nogroovesharkads = {
+    get window() {
+		return content.document.defaultView.wrappedJSObject;
+	},
+
 	init: function() {
 		this.sss = Components.classes["@mozilla.org/content/style-sheet-service;1"]
 					.getService(Components.interfaces.nsIStyleSheetService);
@@ -39,11 +43,27 @@ var nogroovesharkads = {
 					.getService(Components.interfaces.nsIIOService);
 		this.uri = this.ios.newURI("chrome://nogroovesharkads/content/nogroovesharkads.css", null, null);
 		this.registerStyleSheet();
+		
+		var appcontent = document.getElementById("appcontent");
+		if(!appcontent) return;
+		appcontent.addEventListener(
+			"DOMContentLoaded",
+			function(aEvent) {
+				if(!nogroovesharkads.isGrooveshark())
+					return;
+
+				nogroovesharkads.window.GS.user.IsPremium = true;
+			}, true);
 	},
 	
 	registerStyleSheet: function() {
 		if(!this.sss.sheetRegistered(this.uri, this.sss.USER_SHEET))
 			return this.sss.loadAndRegisterSheet(this.uri, this.sss.USER_SHEET);
 		return null;
+	},
+	
+	isGrooveshark: function() {
+		var location = content.document.location;
+		return location.host == "grooveshark.com";
 	}
 };
