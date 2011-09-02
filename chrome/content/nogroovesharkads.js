@@ -29,7 +29,7 @@ the provisions above, a recipient may use your version of this file under
 the terms of any one of the MPL, the GPL or the LGPL.
 * ***** END LICENSE BLOCK ***** */
 
-window.addEventListener("load", function(e) { nogroovesharkads.init(); }, false);
+window.addEventListener("load", function() { nogroovesharkads.init(); }, false);
 
 var nogroovesharkads = {
     get window() {
@@ -48,7 +48,7 @@ var nogroovesharkads = {
 		if(!appcontent) return;
 		appcontent.addEventListener(
 			"DOMContentLoaded",
-			function(aEvent) {
+			function() {
 				if(!nogroovesharkads.isGrooveshark())
 					return;
 
