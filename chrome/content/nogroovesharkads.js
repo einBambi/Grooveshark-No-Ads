@@ -49,7 +49,8 @@ var nogroovesharkads = {
 		appcontent.addEventListener(
 			"DOMContentLoaded",
 			function() {
-				if(!nogroovesharkads.isGrooveshark())
+				if(!nogroovesharkads.isGrooveshark() ||
+				   !nogroovesharkads.window.GS)
 					return;
 
 				nogroovesharkads.window.GS.user.IsPremium = true;
@@ -63,7 +64,13 @@ var nogroovesharkads = {
 	},
 	
 	isGrooveshark: function() {
-		var location = content.document.location;
-		return location.host == "grooveshark.com";
+		var host = null;
+		try {
+			host = content.document.location.host;
+		}
+		catch(ex) {
+			return false;
+		}
+		return host && host == "grooveshark.com";
 	}
 };
