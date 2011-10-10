@@ -71,6 +71,6 @@ var nogroovesharkads = {
 		catch(ex) {
 			return false;
 		}
-		return host && host == "grooveshark.com";
+		return host && (host == "grooveshark.com" || host == "preview.grooveshark.com");
 	}
 };
