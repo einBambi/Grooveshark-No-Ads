@@ -2,7 +2,7 @@
   #capital, #searchCapitalWrapper, #capitalSidebar > *{
     display: none !important
   }
-  #application   {
+  #application {
     margin-right: 0 !important
   }
 }
