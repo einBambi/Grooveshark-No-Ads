@@ -50,7 +50,6 @@ var nogroovesharkads = {
 	},
 
 	init: function() {
-		this.registerStyleSheet();
 		var appcontent = document.getElementById("appcontent");
 		if(!appcontent) return;
 		appcontent.addEventListener("load", 
