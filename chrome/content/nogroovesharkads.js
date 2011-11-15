@@ -31,8 +31,8 @@ the terms of any one of the MPL, the GPL or the LGPL.
 var Cc = Components.classes,
     Ci = Components.interfaces;
 
+nogroovesharkads.registerStyleSheet();
 window.addEventListener("load", function() { nogroovesharkads.init(); }, false);
-
 var nogroovesharkads = {
     get window() {
 		return content.document.defaultView.wrappedJSObject;
@@ -50,13 +50,12 @@ var nogroovesharkads = {
 	},
 
 	init: function() {
-		this.registerStyleSheet();
 		if(!nogroovesharkads.isGrooveshark || !nogroovesharkads.window.GS)
 			return;
 
 		nogroovesharkads.window.GS.user.IsPremium = true;
 	},
-	
+
 	registerStyleSheet: function() {
 		let sss = Cc["@mozilla.org/content/style-sheet-service;1"]
 					.getService(Ci.nsIStyleSheetService);
