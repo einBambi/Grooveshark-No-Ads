@@ -36,6 +36,17 @@ var nogroovesharkads = {
 		return content.document.defaultView.wrappedJSObject;
 	},
 
+	get isGrooveshark() {
+		var host = null;
+		try {
+			host = content.document.location.host;
+		}
+		catch(ex) {
+			return false;
+		}
+		return host && !!host.match(/(preview\.)?grooveshark\.com/);
+	},
+
 	init: function() {
 		this.sss = Components.classes["@mozilla.org/content/style-sheet-service;1"]
 					.getService(Components.interfaces.nsIStyleSheetService);
@@ -49,7 +60,7 @@ var nogroovesharkads = {
 		appcontent.addEventListener(
 			"DOMContentLoaded",
 			function() {
-				if(!nogroovesharkads.isGrooveshark() ||
+				if(!nogroovesharkads.isGrooveshark ||
 				   !nogroovesharkads.window.GS)
 					return;
 
@@ -61,16 +72,5 @@ var nogroovesharkads = {
 		if(!this.sss.sheetRegistered(this.uri, this.sss.USER_SHEET))
 			return this.sss.loadAndRegisterSheet(this.uri, this.sss.USER_SHEET);
 		return null;
-	},
-	
-	isGrooveshark: function() {
-		var host = null;
-		try {
-			host = content.document.location.host;
-		}
-		catch(ex) {
-			return false;
-		}
-		return host && (host == "grooveshark.com" || host == "preview.grooveshark.com");
 	}
 };
