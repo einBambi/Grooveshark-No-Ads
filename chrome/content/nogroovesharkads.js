@@ -51,18 +51,10 @@ var nogroovesharkads = {
 
 	init: function() {
 		this.registerStyleSheet();
-		
-		var appcontent = document.getElementById("appcontent");
-		if(!appcontent) return;
-		appcontent.addEventListener(
-			"DOMContentLoaded",
-			function() {
-				if(!nogroovesharkads.isGrooveshark ||
-				   !nogroovesharkads.window.GS)
-					return;
+		if(!nogroovesharkads.isGrooveshark || !nogroovesharkads.window.GS)
+			return;
 
-				nogroovesharkads.window.GS.user.IsPremium = true;
-			}, true);
+		nogroovesharkads.window.GS.user.IsPremium = true;
 	},
 	
 	registerStyleSheet: function() {
