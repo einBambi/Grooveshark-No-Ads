@@ -28,6 +28,8 @@ and other provisions required by the GPL or the LGPL. If you do not delete
 the provisions above, a recipient may use your version of this file under
 the terms of any one of the MPL, the GPL or the LGPL.
 * ***** END LICENSE BLOCK ***** */
+var Cc = Components.classes,
+    Ci = Components.interfaces;
 
 window.addEventListener("load", function() { nogroovesharkads.init(); }, false);
 
@@ -48,11 +50,6 @@ var nogroovesharkads = {
 	},
 
 	init: function() {
-		this.sss = Components.classes["@mozilla.org/content/style-sheet-service;1"]
-					.getService(Components.interfaces.nsIStyleSheetService);
-		this.ios = Components.classes["@mozilla.org/network/io-service;1"]
-					.getService(Components.interfaces.nsIIOService);
-		this.uri = this.ios.newURI("chrome://nogroovesharkads/content/nogroovesharkads.css", null, null);
 		this.registerStyleSheet();
 		
 		var appcontent = document.getElementById("appcontent");
@@ -69,8 +66,12 @@ var nogroovesharkads = {
 	},
 	
 	registerStyleSheet: function() {
-		if(!this.sss.sheetRegistered(this.uri, this.sss.USER_SHEET))
-			return this.sss.loadAndRegisterSheet(this.uri, this.sss.USER_SHEET);
-		return null;
+		let sss = Cc["@mozilla.org/content/style-sheet-service;1"]
+					.getService(Ci.nsIStyleSheetService);
+		let ios = Cc["@mozilla.org/network/io-service;1"]
+					.getService(Ci.nsIIOService);
+		let uri = ios.newURI("chrome://nogroovesharkads/content/nogroovesharkads.css", null, null);
+		if(!sss.sheetRegistered(uri, sss.USER_SHEET))
+			sss.loadAndRegisterSheet(uri, sss.USER_SHEET);
 	}
 };
