@@ -32,7 +32,6 @@ var Cc = Components.classes,
     Ci = Components.interfaces;
 
 window.addEventListener("load", function() { nogroovesharkads.init(); }, false);
-nogroovesharkads.registerStyleSheet();
 var nogroovesharkads = {
     get window() {
 		return content.document.defaultView.wrappedJSObject;
@@ -50,6 +49,7 @@ var nogroovesharkads = {
 	},
 
 	init: function() {
+		this.registerStyleSheet();
 		var appcontent = document.getElementById("appcontent");
 		if(!appcontent) return;
 		appcontent.addEventListener("load", 
