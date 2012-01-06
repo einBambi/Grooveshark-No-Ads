@@ -33,8 +33,8 @@ var Cc = Components.classes,
 
 window.addEventListener("load", function() { nogroovesharkads.init(); }, false);
 var nogroovesharkads = {
-    get window() {
-		return content.document.defaultView.wrappedJSObject;
+    getTargetWindowObject: function(evt) {
+		return evt.target.defaultView.wrappedJSObject;
 	},
 
 	get isGrooveshark() {
@@ -53,12 +53,13 @@ var nogroovesharkads = {
 		var appcontent = document.getElementById("appcontent");
 		if(!appcontent) return;
 		appcontent.addEventListener("load", 
-			function() {
+			function(evt) {
+				let window = nogroovesharkads.getTargetWindowObject(evt);
 				if(!nogroovesharkads.isGrooveshark ||
-				   !nogroovesharkads.window.GS)
+				   !window || !window.GS)
 					return;
 
-				nogroovesharkads.window.GS.user.IsPremium = true;
+				window.GS.user.IsPremium = true;
 			}, true);
 	},
 	
