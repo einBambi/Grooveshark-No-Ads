@@ -56,7 +56,7 @@ var nogroovesharkads = {
 			function(evt) {
 				let window = nogroovesharkads.getTargetWindowObject(evt);
 				if(!nogroovesharkads.isGrooveshark ||
-				   !window || !window.GS)
+				   !window || !window.GS || !window.GS.user)
 					return;
 
 				window.GS.user.IsPremium = true;
