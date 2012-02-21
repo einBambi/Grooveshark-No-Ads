@@ -52,7 +52,7 @@ var nogroovesharkads = {
 		this.registerStyleSheet();
 		var appcontent = document.getElementById("appcontent");
 		if(!appcontent) return;
-		appcontent.addEventListener("load", 
+		appcontent.addEventListener("load",
 			function(evt) {
 				let window = nogroovesharkads.getTargetWindowObject(evt);
 				if(!nogroovesharkads.isGrooveshark ||
@@ -60,9 +60,11 @@ var nogroovesharkads = {
 					return;
 
 				window.GS.user.IsPremium = true;
+				window.GS.user.subscription.type =
+					window.GS.Models.Subscription.ID_ANYWHERE;
 			}, true);
 	},
-	
+
 	registerStyleSheet: function() {
 		let sss = Cc["@mozilla.org/content/style-sheet-service;1"]
 					.getService(Ci.nsIStyleSheetService);
