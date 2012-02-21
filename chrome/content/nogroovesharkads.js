@@ -59,6 +59,7 @@ var nogroovesharkads = {
 				   !window || !window.GS)
 					return;
 
+				window.GS.user.IsPremium = true;
 				window.GS.user.subscription.type =
 					window.GS.Models.Subscription.ID_ANYWHERE;
 			}, true);
