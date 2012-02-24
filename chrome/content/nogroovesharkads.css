@@ -1,6 +1,6 @@
 @-moz-document domain(grooveshark.com) {
   #capital,
-  #capitalSidebar > *,
+  #capitalSidebar,
   div[id*=CapitalWrapper]
   {
     display: none !important
