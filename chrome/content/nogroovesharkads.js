@@ -62,6 +62,7 @@ var nogroovesharkads = {
 				window.GS.user.IsPremium = true;
 				window.GS.user.subscription.type =
 					window.GS.Models.Subscription.ID_ANYWHERE;
+				window.GS.getAd().hideAdBar();
 			}, true);
 	},
 
