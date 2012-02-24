@@ -59,10 +59,18 @@ var nogroovesharkads = {
 				   !window || !window.GS || !window.GS.user)
 					return;
 
-				window.GS.user.IsPremium = true;
-				window.GS.user.subscription.type =
-					window.GS.Models.Subscription.ID_ANYWHERE;
-				window.GS.getAd().hideAdBar();
+				let user = window.GS.user;
+				let subscription = user.subscription;
+				let subscriptionType = window.GS.Models.Subscription.ID_ANYWHERE;
+				let _true = function() { return true; };
+
+				user.IsPremium = true;
+				subscription.type = subscriptionType;
+				subscription.canHideAds = _true;
+				subscription.canListenUninterrupted = _true;
+				subscription.canUseDesktop = _true;
+				subscription.canDirectEmail = _true;
+
 			}, true);
 	},
 
