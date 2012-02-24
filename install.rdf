@@ -5,7 +5,7 @@
   <Description about="urn:mozilla:install-manifest">
 
     <em:id>nogroovesharkads@tobbi.tk</em:id>
-    <em:version>2.0.4</em:version>
+    <em:version>2.0.5</em:version>
     <em:creator>Tobias Markus</em:creator>
     <em:name>Grooveshark Premium!</em:name>
     <em:description>Enables Grooveshark premium features</em:description>
