@@ -61,16 +61,21 @@ var nogroovesharkads = {
 
 				let user = window.GS.user;
 				let subscription = user.subscription;
-				let subscriptionType = window.GS.Models.Subscription.ID_ANYWHERE;
+				let subscriptionModels = window.GS.Models.Subscription;
+				let subscriptionType = subscriptionModels.ID_ANYWHERE;
+				let subscriptionLength = subscriptionModels.LENGTH_LIFETIME;
 				let _true = function() { return true; };
 
 				user.IsPremium = true;
+				subscription.vip = true;
 				subscription.type = subscriptionType;
+				subscription.length = subscriptionLength;
+
+				subscription.canDirectEmail = _true;
 				subscription.canHideAds = _true;
 				subscription.canListenUninterrupted = _true;
 				subscription.canUseDesktop = _true;
-				subscription.canDirectEmail = _true;
-
+				subscription.canUsePlayerBonuses = _true;
 			}, true);
 	},
 
