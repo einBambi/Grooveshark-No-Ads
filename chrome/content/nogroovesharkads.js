@@ -34,7 +34,7 @@ var Cc = Components.classes,
 window.addEventListener("load", function() { nogroovesharkads.init(); }, false);
 var nogroovesharkads = {
     getTargetWindowObject: function(evt) {
-		return evt.target.defaultView.wrappedJSObject;
+		return evt.target.defaultView.wrappedJSObject || null;
 	},
 
 	get isGrooveshark() {
